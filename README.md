@@ -8,8 +8,13 @@ Configure Spring with Java Annotations
 3 Practice5
 
 Keyword: 
+        
         Automatically scanner components
+        
         @Component   
+        
         @Qualifier    
+        
         @Autowired    
+        
         @Value    
