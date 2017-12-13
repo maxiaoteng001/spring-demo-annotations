@@ -12,4 +12,9 @@ public class BasketballCoach implements Coach {
 		return "Practice 30 minutes of jump shooting";
 	}
 
+	@Override
+	public String getDailyFortune() {
+		return null;
+	}
+
 }

@@ -16,6 +16,9 @@ public class AnnotationDemoApp {
 		// Call the methods of bean
 		System.out.println(theSillyCoach.getDailyWorkout());
 		
+		// Call the new method for get daily fortune
+		System.out.println(theSillyCoach.getDailyFortune());
+		
 		// Close the Spring container or applicationContext
 		myContext.close();
 	}
