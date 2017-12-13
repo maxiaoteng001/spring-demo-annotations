@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Load the properties file: sport.properties in applicationContext.xml -->
+	<context:property-placeholder location = "classpath:sport.properties"/>
+	
+    <!-- Define your beans here -->
+    
+    <!-- define the dependency -->
+	<bean id = "myFortune"
+		class = "com.maxiaoteng.springdemo.HappyFortuneService">
+	</bean>
+ 
+ 	<bean id="myCoach"
+ 		class="com.maxiaoteng.springdemo.TrackCoach">
+ 		
+ 		<!-- Use the second test model -->
+ 		<constructor-arg ref="myFortune" />
+ 			 		
+ 	</bean>
+
+	<bean id = "maxiaoteng'sCoach"
+		class = "com.maxiaoteng.springdemo.BaseballCoach">
+		
+		<!-- set up constructor injection -->
+ 		<constructor-arg ref = "myFortune"></constructor-arg>
+	</bean>
+	
+	
+	<!-- Use the setter injection for cricketCoach -->
+	<bean id = "myCricketCoach"
+		class = "com.maxiaoteng.springdemo.CricketCoach">
+		
+		<!-- Set up the setter injection via property tag-->
+		<property name = "fortuneService"  ref="myFortune"></property>
+		<property name = "emailAddress"  value = "${foo.emailAddress}"/>
+		<property name = "teamName"  value = "${foo.teamName}"/>
+	</bean>
+	
+	<!-- For Practice2 set up a bean-->
+	<!-- Input RandomFortuneService class -->
+	<bean id = "randomFortuneService"
+		class = "com.maxiaoteng.practice2.RandomFortuneService">
+	
+	</bean>
+	
+	<!-- For GolfCoach inject RandomFortuneService -->
+	<bean id = "golfCoach"
+		class = "com.maxiaoteng.practice2.GolfCoach">
+	
+	<!-- Use setter method inject dependency -->
+	<property name="randomFortune" ref ="randomFortuneService"/>
+	
+	</bean>
+   
+
+</beans>
+
+
+
+
+
