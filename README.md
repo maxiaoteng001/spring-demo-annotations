@@ -17,4 +17,16 @@ Keyword:
         
         @Autowired    
         
-        @Value    
+        @Value
+        
+        @PostContruct
+        
+        @PreDestroy 
+        
+        @Configuration
+        
+        @ComponemtScan
+        
+        @Bean
+        
+        @PropertySource
