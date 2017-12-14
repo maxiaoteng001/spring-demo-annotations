@@ -1,4 +1,4 @@
-package com.maxiaoteng.springdemo;
+package com.maxiaoteng.practice6;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -8,15 +8,28 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope
+@Component("theSillyCoach")
+@Scope("prototype")
 public class TennisCoach implements Coach {
 
 	private FortuneService fortuneService;
 	
 	// Create the default constructor
 	public TennisCoach() {
-		System.out.println(">> TennisCoach: constructing...\n");
+		System.out.println(">> TennisCoach: Now in default constructor.\n");
+	}
+	
+	// Create the PostConstruct method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println(">> TennisCoach: Now in doMyStartupStuff() method for init-method\n");
+	}
+	
+	
+	// Create the PreDestroy method
+	@PreDestroy
+	public void doMyCleanupStuff() {
+		System.out.println(">> TennisCoach: Now in doMyCleanupStuff() method for destroy-method\n"); 
 	}
 	
 	// define a setter method or any method that has a argument.
@@ -25,20 +38,6 @@ public class TennisCoach implements Coach {
 	public void setFortuneService(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}
-	
-	// define my init method
-	@PostConstruct
-	public void doMyStartupStuff() {
-		System.out.println(">> TennisCoach: inside of doMyStartupStuff() method.\n");
-	}
-	
-	// define my destroy method
-	@PreDestroy
-	public void doMyCleanupStuff() {
-		System.out.println(">> TennisCoach: inside of doMyCleanupStuff() method.\n");
-		
-	}
-	
 	
 	/*
 	 * @Autowired
